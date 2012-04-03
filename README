@@ -1,0 +1,39 @@
+==========================
+Skeltrack Desktop Control
+==========================
+
+This demo is an example of what can be done with Skeltrack.
+
+It needs a Kinect device, to which it connects using GFreenect, and retrieves
+the head and hands' positions from Skeltrack. Then, the positions are
+interpreted as gestures which are mapped to events in the desktop using Xlib.
+
+This demo is not supposed to be a full-blown gesture interpretation system,
+so, the code is tailored to use cases in the GNOME 3 desktop.
+
+A video showing this demo in use can be watched at:
+
+http://vimeo.com/user1454556/skeltrackdesktopcontrol
+
+Gestures
+========
+
+The gestures are activated when the hands are at a certain distance in front
+of the head (around 30 cm); this is called the "action area".
+
+The following list shows what gestures are interpreted as commands:
+1) One hand moving: Move mouse pointer;
+2) While one hand is in the action area another one hand enters
+   it and quickly leaves: Perform a click;
+3) While one hand is in the action area another one hand enters and stays
+   there: Perform a mouse press (allowing the user to move things around
+   using the other hand);
+
+Apart from the list above, there are two modes when both hands enter the
+action area at about the same time. Those are:
+1) Steering Wheel Mode: Both hands are interpreted as if holding a steering
+   wheel. By default the up arrow key is pressed and the left or right arrow
+   keys are pressed according to the orientation of the hands.
+2) Pinch Mode: Both hands are interpreted as if performing a pinch gesture,
+   which results in a control + mouse wheel up/down event (because
+   this is usually interpreted as zoom in/out).
